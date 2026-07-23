@@ -1,0 +1,2155 @@
+﻿{
+    "openapi":  "3.0.3",
+    "info":  {
+                 "title":  "DSell 直销管理系统 API",
+                 "version":  "1.0.0",
+                 "description":  "Base URL: http://localhost:8080\n认证方式: Header 中携带 token (登录接口返回)"
+             },
+    "servers":  [
+                    {
+                        "url":  "http://localhost:8080"
+                    }
+                ],
+    "security":  [
+                     {
+                         "token":  [
+
+                                   ]
+                     }
+                 ],
+    "components":  {
+                       "securitySchemes":  {
+                                               "token":  {
+                                                             "type":  "apiKey",
+                                                             "in":  "header",
+                                                             "name":  "token"
+                                                         }
+                                           },
+                       "schemas":  {
+                                       "LoginDTO":  {
+                                                        "properties":  {
+                                                                           "password":  {
+                                                                                            "type":  "string",
+                                                                                            "example":  "admin123"
+                                                                                        },
+                                                                           "username":  {
+                                                                                            "description":  "管理员用户名",
+                                                                                            "example":  "admin",
+                                                                                            "type":  "string"
+                                                                                        }
+                                                                       },
+                                                        "type":  "object",
+                                                        "required":  [
+                                                                         "username",
+                                                                         "password"
+                                                                     ]
+                                                    },
+                                       "MemberRegisterDTO":  {
+                                                                 "type":  "object",
+                                                                 "required":  [
+                                                                                  "phone",
+                                                                                  "password"
+                                                                              ],
+                                                                 "properties":  {
+                                                                                    "phone":  {
+                                                                                                  "type":  "string",
+                                                                                                  "example":  "13800000001"
+                                                                                              },
+                                                                                    "password":  {
+                                                                                                     "type":  "string",
+                                                                                                     "example":  "123456"
+                                                                                                 },
+                                                                                    "code":  {
+                                                                                                 "type":  "string",
+                                                                                                 "example":  "888888"
+                                                                                             },
+                                                                                    "inviteCode":  {
+                                                                                                       "type":  "string"
+                                                                                                   },
+                                                                                    "realName":  {
+                                                                                                     "type":  "string"
+                                                                                                 },
+                                                                                    "idCard":  {
+                                                                                                   "type":  "string"
+                                                                                               },
+                                                                                    "email":  {
+                                                                                                  "type":  "string"
+                                                                                              }
+                                                                                }
+                                                             },
+                                       "MemberLoginDTO":  {
+                                                              "type":  "object",
+                                                              "properties":  {
+                                                                                 "phone":  {
+                                                                                               "type":  "string",
+                                                                                               "example":  "13800000001"
+                                                                                           },
+                                                                                 "password":  {
+                                                                                                  "type":  "string",
+                                                                                                  "example":  "123456"
+                                                                                              },
+                                                                                 "code":  {
+                                                                                              "type":  "string",
+                                                                                              "example":  "888888"
+                                                                                          }
+                                                                             }
+                                                          },
+                                       "MemberUpdateDTO":  {
+                                                               "type":  "object",
+                                                               "properties":  {
+                                                                                  "realName":  {
+                                                                                                   "type":  "string"
+                                                                                               },
+                                                                                  "email":  {
+                                                                                                "type":  "string"
+                                                                                            },
+                                                                                  "phone":  {
+                                                                                                "type":  "string"
+                                                                                            },
+                                                                                  "idCard":  {
+                                                                                                 "type":  "string"
+                                                                                             },
+                                                                                  "avatar":  {
+                                                                                                 "type":  "string"
+                                                                                             }
+                                                                              }
+                                                           },
+                                       "MemberAdminDTO":  {
+                                                              "type":  "object",
+                                                              "required":  [
+                                                                               "phone"
+                                                                           ],
+                                                              "properties":  {
+                                                                                 "phone":  {
+                                                                                               "type":  "string"
+                                                                                           },
+                                                                                 "password":  {
+                                                                                                  "type":  "string"
+                                                                                              },
+                                                                                 "realName":  {
+                                                                                                  "type":  "string"
+                                                                                              },
+                                                                                 "levelId":  {
+                                                                                                 "type":  "integer"
+                                                                                             },
+                                                                                 "recommendId":  {
+                                                                                                     "type":  "integer"
+                                                                                                 },
+                                                                                 "status":  {
+                                                                                                "type":  "integer"
+                                                                                            }
+                                                                             }
+                                                          },
+                                       "CreateOrderDTO":  {
+                                                              "type":  "object",
+                                                              "required":  [
+                                                                               "items",
+                                                                               "receiverName",
+                                                                               "receiverPhone",
+                                                                               "receiverAddr"
+                                                                           ],
+                                                              "properties":  {
+                                                                                 "items":  {
+                                                                                               "type":  "array",
+                                                                                               "items":  {
+                                                                                                             "type":  "object",
+                                                                                                             "properties":  {
+                                                                                                                                "productId":  {
+                                                                                                                                                  "type":  "integer"
+                                                                                                                                              },
+                                                                                                                                "skuCode":  {
+                                                                                                                                                "type":  "string"
+                                                                                                                                            },
+                                                                                                                                "quantity":  {
+                                                                                                                                                 "type":  "integer"
+                                                                                                                                             }
+                                                                                                                            }
+                                                                                                         }
+                                                                                           },
+                                                                                 "receiverName":  {
+                                                                                                      "type":  "string"
+                                                                                                  },
+                                                                                 "receiverPhone":  {
+                                                                                                       "type":  "string"
+                                                                                                   },
+                                                                                 "receiverAddr":  {
+                                                                                                      "type":  "string"
+                                                                                                  },
+                                                                                 "remark":  {
+                                                                                                "type":  "string"
+                                                                                            }
+                                                                             }
+                                                          },
+                                       "ProductDTO":  {
+                                                          "type":  "object",
+                                                          "required":  [
+                                                                           "name"
+                                                                       ],
+                                                          "properties":  {
+                                                                             "id":  {
+                                                                                        "type":  "integer"
+                                                                                    },
+                                                                             "name":  {
+                                                                                          "type":  "string"
+                                                                                      },
+                                                                             "categoryId":  {
+                                                                                                "type":  "integer"
+                                                                                            },
+                                                                             "subtitle":  {
+                                                                                              "type":  "string"
+                                                                                          },
+                                                                             "mainImage":  {
+                                                                                               "type":  "string"
+                                                                                           },
+                                                                             "images":  {
+                                                                                            "type":  "string"
+                                                                                        },
+                                                                             "detail":  {
+                                                                                            "type":  "string"
+                                                                                        },
+                                                                             "retailPrice":  {
+                                                                                                 "type":  "number"
+                                                                                             },
+                                                                             "memberPrice":  {
+                                                                                                 "type":  "number"
+                                                                                             },
+                                                                             "pv":  {
+                                                                                        "type":  "number"
+                                                                                    },
+                                                                             "stock":  {
+                                                                                           "type":  "integer"
+                                                                                       },
+                                                                             "isRecommend":  {
+                                                                                                 "type":  "integer",
+                                                                                                 "enum":  [
+                                                                                                              0,
+                                                                                                              1
+                                                                                                          ]
+                                                                                             },
+                                                                             "isNew":  {
+                                                                                           "type":  "integer",
+                                                                                           "enum":  [
+                                                                                                        0,
+                                                                                                        1
+                                                                                                    ]
+                                                                                       },
+                                                                             "status":  {
+                                                                                            "type":  "integer",
+                                                                                            "enum":  [
+                                                                                                         0,
+                                                                                                         1
+                                                                                                     ]
+                                                                                        }
+                                                                         }
+                                                      },
+                                       "PayCreateRequest":  {
+                                                                "type":  "object",
+                                                                "required":  [
+                                                                                 "orderNo",
+                                                                                 "channel"
+                                                                             ],
+                                                                "properties":  {
+                                                                                   "orderNo":  {
+                                                                                                   "type":  "string"
+                                                                                               },
+                                                                                   "channel":  {
+                                                                                                   "type":  "string",
+                                                                                                   "enum":  [
+                                                                                                                "WALLET",
+                                                                                                                "ALIPAY_F2F",
+                                                                                                                "WECHAT_NATIVE",
+                                                                                                                "ALIPAY_WEB",
+                                                                                                                "WECHAT_JSAPI",
+                                                                                                                "WECHAT_MINIAPP",
+                                                                                                                "PAYPAL"
+                                                                                                            ]
+                                                                                               },
+                                                                                   "extra":  {
+                                                                                                 "type":  "object"
+                                                                                             }
+                                                                               }
+                                                            },
+                                       "RechargeCreateRequest":  {
+                                                                     "type":  "object",
+                                                                     "properties":  {
+                                                                                        "amount":  {
+                                                                                                       "type":  "number",
+                                                                                                       "example":  100.00
+                                                                                                   }
+                                                                                    }
+                                                                 },
+                                       "WithdrawApplyDTO":  {
+                                                                "type":  "object",
+                                                                "required":  [
+                                                                                 "bankName",
+                                                                                 "bankCard"
+                                                                             ],
+                                                                "properties":  {
+                                                                                   "amount":  {
+                                                                                                  "type":  "number",
+                                                                                                  "example":  500.00
+                                                                                              },
+                                                                                   "bankName":  {
+                                                                                                    "type":  "string",
+                                                                                                    "example":  "中国工商银行"
+                                                                                                },
+                                                                                   "bankCard":  {
+                                                                                                    "type":  "string",
+                                                                                                    "example":  "6222021234567890123"
+                                                                                                }
+                                                                               }
+                                                            },
+                                       "CaptchaSendRequest":  {
+                                                                  "type":  "object",
+                                                                  "required":  [
+                                                                                   "type",
+                                                                                   "scene",
+                                                                                   "target"
+                                                                               ],
+                                                                  "properties":  {
+                                                                                     "type":  {
+                                                                                                  "type":  "string",
+                                                                                                  "enum":  [
+                                                                                                               "sms",
+                                                                                                               "email"
+                                                                                                           ]
+                                                                                              },
+                                                                                     "scene":  {
+                                                                                                   "type":  "string",
+                                                                                                   "enum":  [
+                                                                                                                "login",
+                                                                                                                "register",
+                                                                                                                "bind",
+                                                                                                                "forget"
+                                                                                                            ]
+                                                                                               },
+                                                                                     "target":  {
+                                                                                                    "type":  "string",
+                                                                                                    "example":  "13800000001"
+                                                                                                }
+                                                                                 }
+                                                              },
+                                       "CaptchaVerifyRequest":  {
+                                                                    "type":  "object",
+                                                                    "required":  [
+                                                                                     "type",
+                                                                                     "scene",
+                                                                                     "target",
+                                                                                     "code"
+                                                                                 ],
+                                                                    "properties":  {
+                                                                                       "type":  {
+                                                                                                    "type":  "string",
+                                                                                                    "enum":  [
+                                                                                                                 "sms",
+                                                                                                                 "email"
+                                                                                                             ]
+                                                                                                },
+                                                                                       "scene":  {
+                                                                                                     "type":  "string",
+                                                                                                     "enum":  [
+                                                                                                                  "login",
+                                                                                                                  "register",
+                                                                                                                  "bind",
+                                                                                                                  "forget"
+                                                                                                              ]
+                                                                                                 },
+                                                                                       "target":  {
+                                                                                                      "type":  "string"
+                                                                                                  },
+                                                                                       "code":  {
+                                                                                                    "type":  "string",
+                                                                                                    "example":  "888888"
+                                                                                                }
+                                                                                   }
+                                                                },
+                                       "Result":  {
+                                                      "type":  "object",
+                                                      "properties":  {
+                                                                         "code":  {
+                                                                                      "type":  "integer",
+                                                                                      "example":  200
+                                                                                  },
+                                                                         "message":  {
+                                                                                         "type":  "string",
+                                                                                         "example":  "success"
+                                                                                     },
+                                                                         "data":  {
+
+                                                                                  }
+                                                                     }
+                                                  }
+                                   }
+                   },
+    "tags":  [
+                 {
+                     "name":  "Auth",
+                     "description":  "系统认证"
+                 },
+                 {
+                     "name":  "Member",
+                     "description":  "会员管理"
+                 },
+                 {
+                     "name":  "Product",
+                     "description":  "产品管理"
+                 },
+                 {
+                     "name":  "Order",
+                     "description":  "订单管理"
+                 },
+                 {
+                     "name":  "Pay",
+                     "description":  "支付"
+                 },
+                 {
+                     "name":  "Finance",
+                     "description":  "财务管理"
+                 },
+                 {
+                     "name":  "Bonus",
+                     "description":  "奖金管理"
+                 },
+                 {
+                     "name":  "Report",
+                     "description":  "报表"
+                 },
+                 {
+                     "name":  "Captcha",
+                     "description":  "验证码"
+                 },
+                 {
+                     "name":  "System",
+                     "description":  "系统管理"
+                 },
+                 {
+                     "name":  "OSS",
+                     "description":  "文件上传"
+                 },
+                 {
+                     "name":  "Social",
+                     "description":  "社交登录"
+                 }
+             ],
+    "paths":  {
+                  "/api/auth/login":  {
+                                          "post":  {
+                                                       "tags":  [
+                                                                    "Auth"
+                                                                ],
+                                                       "summary":  "管理端登录 (用户名+密码)",
+                                                       "security":  [
+
+                                                                    ],
+                                                       "requestBody":  {
+                                                                           "required":  true,
+                                                                           "content":  {
+                                                                                           "application/json":  {
+                                                                                                                    "schema":  {
+                                                                                                                                   "$ref":  "#/components/schemas/LoginDTO"
+                                                                                                                               }
+                                                                                                                }
+                                                                                       }
+                                                                       },
+                                                       "responses":  {
+                                                                         "200":  {
+                                                                                     "description":  "返回token和用户信息"
+                                                                                 }
+                                                                     }
+                                                   }
+                                      },
+                  "/api/auth/logout":  {
+                                           "post":  {
+                                                        "tags":  [
+                                                                     "Auth"
+                                                                 ],
+                                                        "summary":  "退出登录",
+                                                        "responses":  {
+                                                                          "200":  {
+                                                                                      "description":  "成功"
+                                                                                  }
+                                                                      }
+                                                    }
+                                       },
+                  "/api/auth/info":  {
+                                         "get":  {
+                                                     "tags":  [
+                                                                  "Auth"
+                                                              ],
+                                                     "summary":  "获取当前用户信息",
+                                                     "responses":  {
+                                                                       "200":  {
+                                                                                   "description":  "用户信息"
+                                                                               }
+                                                                   }
+                                                 }
+                                     },
+                  "/api/member/register":  {
+                                               "post":  {
+                                                            "tags":  [
+                                                                         "Member"
+                                                                     ],
+                                                            "summary":  "会员注册",
+                                                            "security":  [
+
+                                                                         ],
+                                                            "requestBody":  {
+                                                                                "required":  true,
+                                                                                "content":  {
+                                                                                                "application/json":  {
+                                                                                                                         "schema":  {
+                                                                                                                                        "$ref":  "#/components/schemas/MemberRegisterDTO"
+                                                                                                                                    }
+                                                                                                                     }
+                                                                                            }
+                                                                            },
+                                                            "responses":  {
+                                                                              "200":  {
+                                                                                          "description":  "注册成功"
+                                                                                      }
+                                                                          }
+                                                        }
+                                           },
+                  "/api/member/login":  {
+                                            "post":  {
+                                                         "tags":  [
+                                                                      "Member"
+                                                                  ],
+                                                         "summary":  "会员登录 (密码或验证码)",
+                                                         "security":  [
+
+                                                                      ],
+                                                         "requestBody":  {
+                                                                             "required":  true,
+                                                                             "content":  {
+                                                                                             "application/json":  {
+                                                                                                                      "schema":  {
+                                                                                                                                     "$ref":  "#/components/schemas/MemberLoginDTO"
+                                                                                                                                 }
+                                                                                                                  }
+                                                                                         }
+                                                                         },
+                                                         "responses":  {
+                                                                           "200":  {
+                                                                                       "description":  "返回token和会员信息"
+                                                                                   }
+                                                                       }
+                                                     }
+                                        },
+                  "/api/member/info":  {
+                                           "get":  {
+                                                       "tags":  [
+                                                                    "Member"
+                                                                ],
+                                                       "summary":  "获取当前会员信息"
+                                                   }
+                                       },
+                  "/api/member/update":  {
+                                             "put":  {
+                                                         "tags":  [
+                                                                      "Member"
+                                                                  ],
+                                                         "summary":  "更新会员资料",
+                                                         "requestBody":  {
+                                                                             "content":  {
+                                                                                             "application/json":  {
+                                                                                                                      "schema":  {
+                                                                                                                                     "$ref":  "#/components/schemas/MemberUpdateDTO"
+                                                                                                                                 }
+                                                                                                                  }
+                                                                                         }
+                                                                         }
+                                                     }
+                                         },
+                  "/api/member/page":  {
+                                           "get":  {
+                                                       "tags":  [
+                                                                    "Member"
+                                                                ],
+                                                       "summary":  "分页查询会员列表 (管理端)",
+                                                       "parameters":  [
+                                                                          {
+                                                                              "name":  "page",
+                                                                              "in":  "query",
+                                                                              "schema":  {
+                                                                                             "type":  "integer",
+                                                                                             "default":  1
+                                                                                         }
+                                                                          },
+                                                                          {
+                                                                              "name":  "size",
+                                                                              "in":  "query",
+                                                                              "schema":  {
+                                                                                             "type":  "integer",
+                                                                                             "default":  10
+                                                                                         }
+                                                                          },
+                                                                          {
+                                                                              "name":  "keyword",
+                                                                              "in":  "query",
+                                                                              "schema":  {
+                                                                                             "type":  "string"
+                                                                                         },
+                                                                              "description":  "搜索手机号/姓名"
+                                                                          },
+                                                                          {
+                                                                              "name":  "levelId",
+                                                                              "in":  "query",
+                                                                              "schema":  {
+                                                                                             "type":  "integer"
+                                                                                         }
+                                                                          },
+                                                                          {
+                                                                              "name":  "status",
+                                                                              "in":  "query",
+                                                                              "schema":  {
+                                                                                             "type":  "integer"
+                                                                                         }
+                                                                          }
+                                                                      ]
+                                                   }
+                                       },
+                  "/api/member/admin":  {
+                                            "post":  {
+                                                         "tags":  [
+                                                                      "Member"
+                                                                  ],
+                                                         "summary":  "管理员新增会员",
+                                                         "requestBody":  {
+                                                                             "content":  {
+                                                                                             "application/json":  {
+                                                                                                                      "schema":  {
+                                                                                                                                     "$ref":  "#/components/schemas/MemberAdminDTO"
+                                                                                                                                 }
+                                                                                                                  }
+                                                                                         }
+                                                                         }
+                                                     }
+                                        },
+                  "/api/member/admin/{id}":  {
+                                                 "put":  {
+                                                             "tags":  [
+                                                                          "Member"
+                                                                      ],
+                                                             "summary":  "管理员修改会员",
+                                                             "parameters":  [
+                                                                                {
+                                                                                    "name":  "id",
+                                                                                    "in":  "path",
+                                                                                    "required":  true,
+                                                                                    "schema":  {
+                                                                                                   "type":  "integer"
+                                                                                               }
+                                                                                }
+                                                                            ],
+                                                             "requestBody":  {
+                                                                                 "content":  {
+                                                                                                 "application/json":  {
+                                                                                                                          "schema":  {
+                                                                                                                                         "$ref":  "#/components/schemas/MemberAdminDTO"
+                                                                                                                                     }
+                                                                                                                      }
+                                                                                             }
+                                                                             }
+                                                         }
+                                             },
+                  "/api/member/{id}":  {
+                                           "get":  {
+                                                       "tags":  [
+                                                                    "Member"
+                                                                ],
+                                                       "summary":  "获取会员详情",
+                                                       "parameters":  [
+                                                                          {
+                                                                              "name":  "id",
+                                                                              "in":  "path",
+                                                                              "required":  true,
+                                                                              "schema":  {
+                                                                                             "type":  "integer"
+                                                                                         }
+                                                                          }
+                                                                      ]
+                                                   }
+                                       },
+                  "/api/member/{id}/status":  {
+                                                  "put":  {
+                                                              "tags":  [
+                                                                           "Member"
+                                                                       ],
+                                                              "summary":  "修改会员状态",
+                                                              "parameters":  [
+                                                                                 {
+                                                                                     "name":  "id",
+                                                                                     "in":  "path",
+                                                                                     "required":  true,
+                                                                                     "schema":  {
+                                                                                                    "type":  "integer"
+                                                                                                }
+                                                                                 },
+                                                                                 {
+                                                                                     "name":  "status",
+                                                                                     "in":  "query",
+                                                                                     "required":  true,
+                                                                                     "schema":  {
+                                                                                                    "type":  "integer",
+                                                                                                    "enum":  [
+                                                                                                                 0,
+                                                                                                                 1
+                                                                                                             ]
+                                                                                                },
+                                                                                     "description":  "1=正常 0=禁用"
+                                                                                 }
+                                                                             ]
+                                                          }
+                                              },
+                  "/api/member/{id}/team":  {
+                                                "get":  {
+                                                            "tags":  [
+                                                                         "Member"
+                                                                     ],
+                                                            "summary":  "获取团队树",
+                                                            "parameters":  [
+                                                                               {
+                                                                                   "name":  "id",
+                                                                                   "in":  "path",
+                                                                                   "required":  true,
+                                                                                   "schema":  {
+                                                                                                  "type":  "integer"
+                                                                                              }
+                                                                               },
+                                                                               {
+                                                                                   "name":  "depth",
+                                                                                   "in":  "query",
+                                                                                   "schema":  {
+                                                                                                  "type":  "integer",
+                                                                                                  "default":  3
+                                                                                              }
+                                                                               }
+                                                                           ]
+                                                        }
+                                            },
+                  "/api/member/level/all":  {
+                                                "get":  {
+                                                            "tags":  [
+                                                                         "Member"
+                                                                     ],
+                                                            "summary":  "获取所有会员等级",
+                                                            "security":  [
+
+                                                                         ]
+                                                        }
+                                            },
+                  "/api/member/level/{id}":  {
+                                                 "get":  {
+                                                             "tags":  [
+                                                                          "Member"
+                                                                      ],
+                                                             "summary":  "获取单个等级",
+                                                             "security":  [
+
+                                                                          ],
+                                                             "parameters":  [
+                                                                                {
+                                                                                    "name":  "id",
+                                                                                    "in":  "path",
+                                                                                    "required":  true,
+                                                                                    "schema":  {
+                                                                                                   "type":  "integer"
+                                                                                               }
+                                                                                }
+                                                                            ]
+                                                         }
+                                             },
+                  "/api/product/page":  {
+                                            "get":  {
+                                                        "tags":  [
+                                                                     "Product"
+                                                                 ],
+                                                        "summary":  "分页查询产品",
+                                                        "parameters":  [
+                                                                           {
+                                                                               "name":  "page",
+                                                                               "in":  "query",
+                                                                               "schema":  {
+                                                                                              "type":  "integer",
+                                                                                              "default":  1
+                                                                                          }
+                                                                           },
+                                                                           {
+                                                                               "name":  "size",
+                                                                               "in":  "query",
+                                                                               "schema":  {
+                                                                                              "type":  "integer",
+                                                                                              "default":  10
+                                                                                          }
+                                                                           },
+                                                                           {
+                                                                               "name":  "keyword",
+                                                                               "in":  "query",
+                                                                               "schema":  {
+                                                                                              "type":  "string"
+                                                                                          }
+                                                                           },
+                                                                           {
+                                                                               "name":  "categoryId",
+                                                                               "in":  "query",
+                                                                               "schema":  {
+                                                                                              "type":  "integer"
+                                                                                          }
+                                                                           },
+                                                                           {
+                                                                               "name":  "status",
+                                                                               "in":  "query",
+                                                                               "schema":  {
+                                                                                              "type":  "integer"
+                                                                                          }
+                                                                           }
+                                                                       ]
+                                                    }
+                                        },
+                  "/api/product/{id}":  {
+                                            "get":  {
+                                                        "tags":  [
+                                                                     "Product"
+                                                                 ],
+                                                        "summary":  "获取产品详情",
+                                                        "parameters":  [
+                                                                           {
+                                                                               "name":  "id",
+                                                                               "in":  "path",
+                                                                               "required":  true,
+                                                                               "schema":  {
+                                                                                              "type":  "integer"
+                                                                                          }
+                                                                           }
+                                                                       ]
+                                                    }
+                                        },
+                  "/api/product":  {
+                                       "post":  {
+                                                    "tags":  [
+                                                                 "Product"
+                                                             ],
+                                                    "summary":  "新增产品",
+                                                    "requestBody":  {
+                                                                        "content":  {
+                                                                                        "application/json":  {
+                                                                                                                 "schema":  {
+                                                                                                                                "$ref":  "#/components/schemas/ProductDTO"
+                                                                                                                            }
+                                                                                                             }
+                                                                                    }
+                                                                    }
+                                                },
+                                       "put":  {
+                                                   "tags":  [
+                                                                "Product"
+                                                            ],
+                                                   "summary":  "更新产品",
+                                                   "requestBody":  {
+                                                                       "content":  {
+                                                                                       "application/json":  {
+                                                                                                                "schema":  {
+                                                                                                                               "$ref":  "#/components/schemas/ProductDTO"
+                                                                                                                           }
+                                                                                                            }
+                                                                                   }
+                                                                   }
+                                               }
+                                   },
+                  "/api/product/{id}/status":  {
+                                                   "put":  {
+                                                               "tags":  [
+                                                                            "Product"
+                                                                        ],
+                                                               "summary":  "修改产品状态",
+                                                               "parameters":  [
+                                                                                  {
+                                                                                      "name":  "id",
+                                                                                      "in":  "path",
+                                                                                      "required":  true,
+                                                                                      "schema":  {
+                                                                                                     "type":  "integer"
+                                                                                                 }
+                                                                                  },
+                                                                                  {
+                                                                                      "name":  "status",
+                                                                                      "in":  "query",
+                                                                                      "required":  true,
+                                                                                      "schema":  {
+                                                                                                     "type":  "integer",
+                                                                                                     "enum":  [
+                                                                                                                  0,
+                                                                                                                  1
+                                                                                                              ]
+                                                                                                 }
+                                                                                  }
+                                                                              ]
+                                                           }
+                                               },
+                  "/api/product/{id}/stock":  {
+                                                  "put":  {
+                                                              "tags":  [
+                                                                           "Product"
+                                                                       ],
+                                                              "summary":  "修改库存",
+                                                              "parameters":  [
+                                                                                 {
+                                                                                     "name":  "id",
+                                                                                     "in":  "path",
+                                                                                     "required":  true,
+                                                                                     "schema":  {
+                                                                                                    "type":  "integer"
+                                                                                                }
+                                                                                 },
+                                                                                 {
+                                                                                     "name":  "stock",
+                                                                                     "in":  "query",
+                                                                                     "required":  true,
+                                                                                     "schema":  {
+                                                                                                    "type":  "integer"
+                                                                                                }
+                                                                                 }
+                                                                             ]
+                                                          }
+                                              },
+                  "/api/product/category/tree":  {
+                                                     "get":  {
+                                                                 "tags":  [
+                                                                              "Product"
+                                                                          ],
+                                                                 "summary":  "获取分类树",
+                                                                 "security":  [
+
+                                                                              ]
+                                                             }
+                                                 },
+                  "/api/product/category/{id}":  {
+                                                     "get":  {
+                                                                 "tags":  [
+                                                                              "Product"
+                                                                          ],
+                                                                 "summary":  "获取分类详情",
+                                                                 "security":  [
+
+                                                                              ],
+                                                                 "parameters":  [
+                                                                                    {
+                                                                                        "name":  "id",
+                                                                                        "in":  "path",
+                                                                                        "required":  true,
+                                                                                        "schema":  {
+                                                                                                       "type":  "integer"
+                                                                                                   }
+                                                                                    }
+                                                                                ]
+                                                             },
+                                                     "delete":  {
+                                                                    "tags":  [
+                                                                                 "Product"
+                                                                             ],
+                                                                    "summary":  "删除分类",
+                                                                    "security":  [
+
+                                                                                 ],
+                                                                    "parameters":  [
+                                                                                       {
+                                                                                           "name":  "id",
+                                                                                           "in":  "path",
+                                                                                           "required":  true,
+                                                                                           "schema":  {
+                                                                                                          "type":  "integer"
+                                                                                                      }
+                                                                                       }
+                                                                                   ]
+                                                                }
+                                                 },
+                  "/api/order/create":  {
+                                            "post":  {
+                                                         "tags":  [
+                                                                      "Order"
+                                                                  ],
+                                                         "summary":  "创建订单",
+                                                         "requestBody":  {
+                                                                             "required":  true,
+                                                                             "content":  {
+                                                                                             "application/json":  {
+                                                                                                                      "schema":  {
+                                                                                                                                     "$ref":  "#/components/schemas/CreateOrderDTO"
+                                                                                                                                 }
+                                                                                                                  }
+                                                                                         }
+                                                                         }
+                                                     }
+                                        },
+                  "/api/order/page":  {
+                                          "get":  {
+                                                      "tags":  [
+                                                                   "Order"
+                                                               ],
+                                                      "summary":  "分页查询订单",
+                                                      "parameters":  [
+                                                                         {
+                                                                             "name":  "page",
+                                                                             "in":  "query",
+                                                                             "schema":  {
+                                                                                            "type":  "integer",
+                                                                                            "default":  1
+                                                                                        }
+                                                                         },
+                                                                         {
+                                                                             "name":  "size",
+                                                                             "in":  "query",
+                                                                             "schema":  {
+                                                                                            "type":  "integer",
+                                                                                            "default":  10
+                                                                                        }
+                                                                         },
+                                                                         {
+                                                                             "name":  "status",
+                                                                             "in":  "query",
+                                                                             "schema":  {
+                                                                                            "type":  "integer"
+                                                                                        },
+                                                                             "description":  "订单状态"
+                                                                         },
+                                                                         {
+                                                                             "name":  "keyword",
+                                                                             "in":  "query",
+                                                                             "schema":  {
+                                                                                            "type":  "string"
+                                                                                        },
+                                                                             "description":  "订单号"
+                                                                         }
+                                                                     ]
+                                                  }
+                                      },
+                  "/api/order/{id}":  {
+                                          "get":  {
+                                                      "tags":  [
+                                                                   "Order"
+                                                               ],
+                                                      "summary":  "获取订单详情",
+                                                      "parameters":  [
+                                                                         {
+                                                                             "name":  "id",
+                                                                             "in":  "path",
+                                                                             "required":  true,
+                                                                             "schema":  {
+                                                                                            "type":  "integer"
+                                                                                        }
+                                                                         }
+                                                                     ]
+                                                  }
+                                      },
+                  "/api/order/{id}/pay":  {
+                                              "put":  {
+                                                          "tags":  [
+                                                                       "Order"
+                                                                   ],
+                                                          "summary":  "支付订单",
+                                                          "parameters":  [
+                                                                             {
+                                                                                 "name":  "id",
+                                                                                 "in":  "path",
+                                                                                 "required":  true,
+                                                                                 "schema":  {
+                                                                                                "type":  "integer"
+                                                                                            }
+                                                                             }
+                                                                         ]
+                                                      }
+                                          },
+                  "/api/order/{id}/ship":  {
+                                               "put":  {
+                                                           "tags":  [
+                                                                        "Order"
+                                                                    ],
+                                                           "summary":  "发货",
+                                                           "parameters":  [
+                                                                              {
+                                                                                  "name":  "id",
+                                                                                  "in":  "path",
+                                                                                  "required":  true,
+                                                                                  "schema":  {
+                                                                                                 "type":  "integer"
+                                                                                             }
+                                                                              },
+                                                                              {
+                                                                                  "name":  "expressCompany",
+                                                                                  "in":  "query",
+                                                                                  "schema":  {
+                                                                                                 "type":  "string"
+                                                                                             },
+                                                                                  "description":  "快递公司"
+                                                                              },
+                                                                              {
+                                                                                  "name":  "expressNo",
+                                                                                  "in":  "query",
+                                                                                  "schema":  {
+                                                                                                 "type":  "string"
+                                                                                             },
+                                                                                  "description":  "快递单号"
+                                                                              }
+                                                                          ]
+                                                       }
+                                           },
+                  "/api/order/{id}/receive":  {
+                                                  "put":  {
+                                                              "tags":  [
+                                                                           "Order"
+                                                                       ],
+                                                              "summary":  "确认收货",
+                                                              "parameters":  [
+                                                                                 {
+                                                                                     "name":  "id",
+                                                                                     "in":  "path",
+                                                                                     "required":  true,
+                                                                                     "schema":  {
+                                                                                                    "type":  "integer"
+                                                                                                }
+                                                                                 }
+                                                                             ]
+                                                          }
+                                              },
+                  "/api/order/{id}/cancel":  {
+                                                 "put":  {
+                                                             "tags":  [
+                                                                          "Order"
+                                                                      ],
+                                                             "summary":  "取消订单",
+                                                             "parameters":  [
+                                                                                {
+                                                                                    "name":  "id",
+                                                                                    "in":  "path",
+                                                                                    "required":  true,
+                                                                                    "schema":  {
+                                                                                                   "type":  "integer"
+                                                                                               }
+                                                                                }
+                                                                            ]
+                                                         }
+                                             },
+                  "/api/pay/create":  {
+                                          "post":  {
+                                                       "tags":  [
+                                                                    "Pay"
+                                                                ],
+                                                       "summary":  "创建支付",
+                                                       "requestBody":  {
+                                                                           "required":  true,
+                                                                           "content":  {
+                                                                                           "application/json":  {
+                                                                                                                    "schema":  {
+                                                                                                                                   "$ref":  "#/components/schemas/PayCreateRequest"
+                                                                                                                               }
+                                                                                                                }
+                                                                                       }
+                                                                       }
+                                                   }
+                                      },
+                  "/api/pay/recharge":  {
+                                            "post":  {
+                                                         "tags":  [
+                                                                      "Pay"
+                                                                  ],
+                                                         "summary":  "钱包充值",
+                                                         "requestBody":  {
+                                                                             "content":  {
+                                                                                             "application/json":  {
+                                                                                                                      "schema":  {
+                                                                                                                                     "$ref":  "#/components/schemas/RechargeCreateRequest"
+                                                                                                                                 }
+                                                                                                                  }
+                                                                                         }
+                                                                         }
+                                                     }
+                                        },
+                  "/api/pay/query/{payOrderNo}":  {
+                                                      "get":  {
+                                                                  "tags":  [
+                                                                               "Pay"
+                                                                           ],
+                                                                  "summary":  "查询支付状态",
+                                                                  "parameters":  [
+                                                                                     {
+                                                                                         "name":  "payOrderNo",
+                                                                                         "in":  "path",
+                                                                                         "required":  true,
+                                                                                         "schema":  {
+                                                                                                        "type":  "string"
+                                                                                                    }
+                                                                                     }
+                                                                                 ]
+                                                              }
+                                                  },
+                  "/api/pay/cancel/{payOrderNo}":  {
+                                                       "post":  {
+                                                                    "tags":  [
+                                                                                 "Pay"
+                                                                             ],
+                                                                    "summary":  "取消支付",
+                                                                    "parameters":  [
+                                                                                       {
+                                                                                           "name":  "payOrderNo",
+                                                                                           "in":  "path",
+                                                                                           "required":  true,
+                                                                                           "schema":  {
+                                                                                                          "type":  "string"
+                                                                                                      }
+                                                                                       }
+                                                                                   ]
+                                                                }
+                                                   },
+                  "/api/pay/refund":  {
+                                          "post":  {
+                                                       "tags":  [
+                                                                    "Pay"
+                                                                ],
+                                                       "summary":  "申请退款",
+                                                       "requestBody":  {
+                                                                           "content":  {
+                                                                                           "application/json":  {
+                                                                                                                    "schema":  {
+                                                                                                                                   "type":  "object",
+                                                                                                                                   "properties":  {
+                                                                                                                                                      "payOrderNo":  {
+                                                                                                                                                                         "type":  "string"
+                                                                                                                                                                     },
+                                                                                                                                                      "amount":  {
+                                                                                                                                                                     "type":  "number"
+                                                                                                                                                                 },
+                                                                                                                                                      "reason":  {
+                                                                                                                                                                     "type":  "string"
+                                                                                                                                                                 }
+                                                                                                                                                  }
+                                                                                                                               }
+                                                                                                                }
+                                                                                       }
+                                                                       }
+                                                   }
+                                      },
+                  "/api/pay/callback/{channel}":  {
+                                                      "post":  {
+                                                                   "tags":  [
+                                                                                "Pay"
+                                                                            ],
+                                                                   "summary":  "支付回调",
+                                                                   "security":  [
+
+                                                                                ],
+                                                                   "parameters":  [
+                                                                                      {
+                                                                                          "name":  "channel",
+                                                                                          "in":  "path",
+                                                                                          "required":  true,
+                                                                                          "schema":  {
+                                                                                                         "type":  "string"
+                                                                                                     }
+                                                                                      }
+                                                                                  ]
+                                                               }
+                                                  },
+                  "/api/finance/wallet/logs":  {
+                                                   "get":  {
+                                                               "tags":  [
+                                                                            "Finance"
+                                                                        ],
+                                                               "summary":  "钱包流水 (管理端)",
+                                                               "parameters":  [
+                                                                                  {
+                                                                                      "name":  "page",
+                                                                                      "in":  "query",
+                                                                                      "schema":  {
+                                                                                                     "type":  "integer",
+                                                                                                     "default":  1
+                                                                                                 }
+                                                                                  },
+                                                                                  {
+                                                                                      "name":  "size",
+                                                                                      "in":  "query",
+                                                                                      "schema":  {
+                                                                                                     "type":  "integer",
+                                                                                                     "default":  10
+                                                                                                 }
+                                                                                  }
+                                                                              ]
+                                                           }
+                                               },
+                  "/api/finance/wallet/logs/my":  {
+                                                      "get":  {
+                                                                  "tags":  [
+                                                                               "Finance"
+                                                                           ],
+                                                                  "summary":  "我的钱包流水",
+                                                                  "parameters":  [
+                                                                                     {
+                                                                                         "name":  "page",
+                                                                                         "in":  "query",
+                                                                                         "schema":  {
+                                                                                                        "type":  "integer",
+                                                                                                        "default":  1
+                                                                                                    }
+                                                                                     },
+                                                                                     {
+                                                                                         "name":  "size",
+                                                                                         "in":  "query",
+                                                                                         "schema":  {
+                                                                                                        "type":  "integer",
+                                                                                                        "default":  10
+                                                                                                    }
+                                                                                     }
+                                                                                 ]
+                                                              }
+                                                  },
+                  "/api/finance/withdraw/apply":  {
+                                                      "post":  {
+                                                                   "tags":  [
+                                                                                "Finance"
+                                                                            ],
+                                                                   "summary":  "申请提现",
+                                                                   "requestBody":  {
+                                                                                       "required":  true,
+                                                                                       "content":  {
+                                                                                                       "application/json":  {
+                                                                                                                                "schema":  {
+                                                                                                                                               "$ref":  "#/components/schemas/WithdrawApplyDTO"
+                                                                                                                                           }
+                                                                                                                            }
+                                                                                                   }
+                                                                                   }
+                                                               }
+                                                  },
+                  "/api/finance/withdraw/page":  {
+                                                     "get":  {
+                                                                 "tags":  [
+                                                                              "Finance"
+                                                                          ],
+                                                                 "summary":  "分页查询提现 (管理端)",
+                                                                 "parameters":  [
+                                                                                    {
+                                                                                        "name":  "page",
+                                                                                        "in":  "query",
+                                                                                        "schema":  {
+                                                                                                       "type":  "integer",
+                                                                                                       "default":  1
+                                                                                                   }
+                                                                                    },
+                                                                                    {
+                                                                                        "name":  "size",
+                                                                                        "in":  "query",
+                                                                                        "schema":  {
+                                                                                                       "type":  "integer",
+                                                                                                       "default":  10
+                                                                                                   }
+                                                                                    },
+                                                                                    {
+                                                                                        "name":  "status",
+                                                                                        "in":  "query",
+                                                                                        "schema":  {
+                                                                                                       "type":  "integer",
+                                                                                                       "enum":  [
+                                                                                                                    0,
+                                                                                                                    1,
+                                                                                                                    2
+                                                                                                                ]
+                                                                                                   },
+                                                                                        "description":  "0=待审核 1=通过 2=拒绝"
+                                                                                    }
+                                                                                ]
+                                                             }
+                                                 },
+                  "/api/finance/withdraw/my":  {
+                                                   "get":  {
+                                                               "tags":  [
+                                                                            "Finance"
+                                                                        ],
+                                                               "summary":  "我的提现记录",
+                                                               "parameters":  [
+                                                                                  {
+                                                                                      "name":  "page",
+                                                                                      "in":  "query",
+                                                                                      "schema":  {
+                                                                                                     "type":  "integer",
+                                                                                                     "default":  1
+                                                                                                 }
+                                                                                  },
+                                                                                  {
+                                                                                      "name":  "size",
+                                                                                      "in":  "query",
+                                                                                      "schema":  {
+                                                                                                     "type":  "integer",
+                                                                                                     "default":  10
+                                                                                                 }
+                                                                                  }
+                                                                              ]
+                                                           }
+                                               },
+                  "/api/finance/withdraw/{id}/audit":  {
+                                                           "put":  {
+                                                                       "tags":  [
+                                                                                    "Finance"
+                                                                                ],
+                                                                       "summary":  "审核提现",
+                                                                       "parameters":  [
+                                                                                          {
+                                                                                              "name":  "id",
+                                                                                              "in":  "path",
+                                                                                              "required":  true,
+                                                                                              "schema":  {
+                                                                                                             "type":  "integer"
+                                                                                                         }
+                                                                                          },
+                                                                                          {
+                                                                                              "name":  "status",
+                                                                                              "in":  "query",
+                                                                                              "required":  true,
+                                                                                              "schema":  {
+                                                                                                             "type":  "integer",
+                                                                                                             "enum":  [
+                                                                                                                          1,
+                                                                                                                          2
+                                                                                                                      ]
+                                                                                                         },
+                                                                                              "description":  "1=通过 2=拒绝"
+                                                                                          },
+                                                                                          {
+                                                                                              "name":  "remark",
+                                                                                              "in":  "query",
+                                                                                              "schema":  {
+                                                                                                             "type":  "string"
+                                                                                                         }
+                                                                                          }
+                                                                                      ]
+                                                                   }
+                                                       },
+                  "/api/finance/withdraw/{id}/grant":  {
+                                                           "put":  {
+                                                                       "tags":  [
+                                                                                    "Finance"
+                                                                                ],
+                                                                       "summary":  "发放提现",
+                                                                       "parameters":  [
+                                                                                          {
+                                                                                              "name":  "id",
+                                                                                              "in":  "path",
+                                                                                              "required":  true,
+                                                                                              "schema":  {
+                                                                                                             "type":  "integer"
+                                                                                                         }
+                                                                                          }
+                                                                                      ]
+                                                                   }
+                                                       },
+                  "/api/bonus/plan/all":  {
+                                              "get":  {
+                                                          "tags":  [
+                                                                       "Bonus"
+                                                                   ],
+                                                          "summary":  "获取所有奖金计划",
+                                                          "security":  [
+
+                                                                       ]
+                                                      }
+                                          },
+                  "/api/bonus/plan/active":  {
+                                                 "get":  {
+                                                             "tags":  [
+                                                                          "Bonus"
+                                                                      ],
+                                                             "summary":  "获取当前生效计划",
+                                                             "security":  [
+
+                                                                          ]
+                                                         }
+                                             },
+                  "/api/bonus/plan/switch/{planId}":  {
+                                                          "put":  {
+                                                                      "tags":  [
+                                                                                   "Bonus"
+                                                                               ],
+                                                                      "summary":  "切换奖金计划",
+                                                                      "parameters":  [
+                                                                                         {
+                                                                                             "name":  "planId",
+                                                                                             "in":  "path",
+                                                                                             "required":  true,
+                                                                                             "schema":  {
+                                                                                                            "type":  "integer"
+                                                                                                        }
+                                                                                         }
+                                                                                     ]
+                                                                  }
+                                                      },
+                  "/api/bonus/plan":  {
+                                          "post":  {
+                                                       "tags":  [
+                                                                    "Bonus"
+                                                                ],
+                                                       "summary":  "新增奖金计划"
+                                                   }
+                                      },
+                  "/api/bonus/plan/{id}":  {
+                                               "put":  {
+                                                           "tags":  [
+                                                                        "Bonus"
+                                                                    ],
+                                                           "summary":  "编辑奖金计划",
+                                                           "parameters":  [
+                                                                              {
+                                                                                  "name":  "id",
+                                                                                  "in":  "path",
+                                                                                  "required":  true,
+                                                                                  "schema":  {
+                                                                                                 "type":  "integer"
+                                                                                             }
+                                                                              }
+                                                                          ]
+                                                       }
+                                           },
+                  "/api/bonus/record/page":  {
+                                                 "get":  {
+                                                             "tags":  [
+                                                                          "Bonus"
+                                                                      ],
+                                                             "summary":  "分页查询奖金记录",
+                                                             "parameters":  [
+                                                                                {
+                                                                                    "name":  "page",
+                                                                                    "in":  "query",
+                                                                                    "schema":  {
+                                                                                                   "type":  "integer",
+                                                                                                   "default":  1
+                                                                                               }
+                                                                                },
+                                                                                {
+                                                                                    "name":  "size",
+                                                                                    "in":  "query",
+                                                                                    "schema":  {
+                                                                                                   "type":  "integer",
+                                                                                                   "default":  10
+                                                                                               }
+                                                                                },
+                                                                                {
+                                                                                    "name":  "month",
+                                                                                    "in":  "query",
+                                                                                    "schema":  {
+                                                                                                   "type":  "string"
+                                                                                               },
+                                                                                    "description":  "如: 2024-01"
+                                                                                }
+                                                                            ]
+                                                         }
+                                             },
+                  "/api/bonus/record/my":  {
+                                               "get":  {
+                                                           "tags":  [
+                                                                        "Bonus"
+                                                                    ],
+                                                           "summary":  "我的奖金记录",
+                                                           "parameters":  [
+                                                                              {
+                                                                                  "name":  "page",
+                                                                                  "in":  "query",
+                                                                                  "schema":  {
+                                                                                                 "type":  "integer",
+                                                                                                 "default":  1
+                                                                                             }
+                                                                              },
+                                                                              {
+                                                                                  "name":  "size",
+                                                                                  "in":  "query",
+                                                                                  "schema":  {
+                                                                                                 "type":  "integer",
+                                                                                                 "default":  10
+                                                                                             }
+                                                                              }
+                                                                          ]
+                                                       }
+                                           },
+                  "/api/bonus/record/grant":  {
+                                                  "put":  {
+                                                              "tags":  [
+                                                                           "Bonus"
+                                                                       ],
+                                                              "summary":  "发放奖金 (批量)",
+                                                              "requestBody":  {
+                                                                                  "content":  {
+                                                                                                  "application/json":  {
+                                                                                                                           "schema":  {
+                                                                                                                                          "type":  "array",
+                                                                                                                                          "items":  {
+                                                                                                                                                        "type":  "integer"
+                                                                                                                                                    },
+                                                                                                                                          "example":  [
+                                                                                                                                                          1,
+                                                                                                                                                          2,
+                                                                                                                                                          3
+                                                                                                                                                      ]
+                                                                                                                                      }
+                                                                                                                       }
+                                                                                              }
+                                                                              }
+                                                          }
+                                              },
+                  "/api/report/dashboard/overview":  {
+                                                         "get":  {
+                                                                     "tags":  [
+                                                                                  "Report"
+                                                                              ],
+                                                                     "summary":  "数据概览 (仪表盘)"
+                                                                 }
+                                                     },
+                  "/api/report/sales":  {
+                                            "get":  {
+                                                        "tags":  [
+                                                                     "Report"
+                                                                 ],
+                                                        "summary":  "销售报表",
+                                                        "parameters":  [
+                                                                           {
+                                                                               "name":  "startDate",
+                                                                               "in":  "query",
+                                                                               "schema":  {
+                                                                                              "type":  "string"
+                                                                                          },
+                                                                               "example":  "2024-01-01"
+                                                                           },
+                                                                           {
+                                                                               "name":  "endDate",
+                                                                               "in":  "query",
+                                                                               "schema":  {
+                                                                                              "type":  "string"
+                                                                                          },
+                                                                               "example":  "2024-01-31"
+                                                                           }
+                                                                       ]
+                                                    }
+                                        },
+                  "/api/report/member":  {
+                                             "get":  {
+                                                         "tags":  [
+                                                                      "Report"
+                                                                  ],
+                                                         "summary":  "会员报表",
+                                                         "parameters":  [
+                                                                            {
+                                                                                "name":  "startDate",
+                                                                                "in":  "query",
+                                                                                "schema":  {
+                                                                                               "type":  "string"
+                                                                                           }
+                                                                            },
+                                                                            {
+                                                                                "name":  "endDate",
+                                                                                "in":  "query",
+                                                                                "schema":  {
+                                                                                               "type":  "string"
+                                                                                           }
+                                                                            }
+                                                                        ]
+                                                     }
+                                         },
+                  "/api/report/bonus":  {
+                                            "get":  {
+                                                        "tags":  [
+                                                                     "Report"
+                                                                 ],
+                                                        "summary":  "奖金报表",
+                                                        "parameters":  [
+                                                                           {
+                                                                               "name":  "startDate",
+                                                                               "in":  "query",
+                                                                               "schema":  {
+                                                                                              "type":  "string"
+                                                                                          }
+                                                                           },
+                                                                           {
+                                                                               "name":  "endDate",
+                                                                               "in":  "query",
+                                                                               "schema":  {
+                                                                                              "type":  "string"
+                                                                                          }
+                                                                           }
+                                                                       ]
+                                                    }
+                                        },
+                  "/api/report/team":  {
+                                           "get":  {
+                                                       "tags":  [
+                                                                    "Report"
+                                                                ],
+                                                       "summary":  "团队报表",
+                                                       "parameters":  [
+                                                                          {
+                                                                              "name":  "memberId",
+                                                                              "in":  "query",
+                                                                              "schema":  {
+                                                                                             "type":  "integer"
+                                                                                         }
+                                                                          },
+                                                                          {
+                                                                              "name":  "depth",
+                                                                              "in":  "query",
+                                                                              "schema":  {
+                                                                                             "type":  "integer",
+                                                                                             "default":  3
+                                                                                         }
+                                                                          }
+                                                                      ]
+                                                   }
+                                       },
+                  "/api/captcha/send":  {
+                                            "post":  {
+                                                         "tags":  [
+                                                                      "Captcha"
+                                                                  ],
+                                                         "summary":  "发送验证码",
+                                                         "security":  [
+
+                                                                      ],
+                                                         "requestBody":  {
+                                                                             "required":  true,
+                                                                             "content":  {
+                                                                                             "application/json":  {
+                                                                                                                      "schema":  {
+                                                                                                                                     "$ref":  "#/components/schemas/CaptchaSendRequest"
+                                                                                                                                 }
+                                                                                                                  }
+                                                                                         }
+                                                                         }
+                                                     }
+                                        },
+                  "/api/captcha/verify":  {
+                                              "post":  {
+                                                           "tags":  [
+                                                                        "Captcha"
+                                                                    ],
+                                                           "summary":  "校验验证码",
+                                                           "security":  [
+
+                                                                        ],
+                                                           "requestBody":  {
+                                                                               "required":  true,
+                                                                               "content":  {
+                                                                                               "application/json":  {
+                                                                                                                        "schema":  {
+                                                                                                                                       "$ref":  "#/components/schemas/CaptchaVerifyRequest"
+                                                                                                                                   }
+                                                                                                                    }
+                                                                                           }
+                                                                           }
+                                                       }
+                                          },
+                  "/api/system/user/page":  {
+                                                "get":  {
+                                                            "tags":  [
+                                                                         "System"
+                                                                     ],
+                                                            "summary":  "分页查询用户",
+                                                            "parameters":  [
+                                                                               {
+                                                                                   "name":  "page",
+                                                                                   "in":  "query",
+                                                                                   "schema":  {
+                                                                                                  "type":  "integer",
+                                                                                                  "default":  1
+                                                                                              }
+                                                                               },
+                                                                               {
+                                                                                   "name":  "size",
+                                                                                   "in":  "query",
+                                                                                   "schema":  {
+                                                                                                  "type":  "integer",
+                                                                                                  "default":  10
+                                                                                              }
+                                                                               }
+                                                                           ]
+                                                        }
+                                            },
+                  "/api/system/user/{id}":  {
+                                                "get":  {
+                                                            "tags":  [
+                                                                         "System"
+                                                                     ],
+                                                            "summary":  "获取用户详情",
+                                                            "parameters":  [
+                                                                               {
+                                                                                   "name":  "id",
+                                                                                   "in":  "path",
+                                                                                   "required":  true,
+                                                                                   "schema":  {
+                                                                                                  "type":  "integer"
+                                                                                              }
+                                                                               }
+                                                                           ]
+                                                        },
+                                                "delete":  {
+                                                               "tags":  [
+                                                                            "System"
+                                                                        ],
+                                                               "summary":  "删除用户",
+                                                               "parameters":  [
+                                                                                  {
+                                                                                      "name":  "id",
+                                                                                      "in":  "path",
+                                                                                      "required":  true,
+                                                                                      "schema":  {
+                                                                                                     "type":  "integer"
+                                                                                                 }
+                                                                                  }
+                                                                              ]
+                                                           }
+                                            },
+                  "/api/system/user":  {
+                                           "post":  {
+                                                        "tags":  [
+                                                                     "System"
+                                                                 ],
+                                                        "summary":  "新增用户"
+                                                    },
+                                           "put":  {
+                                                       "tags":  [
+                                                                    "System"
+                                                                ],
+                                                       "summary":  "编辑用户"
+                                                   }
+                                       },
+                  "/api/system/user/{id}/status":  {
+                                                       "put":  {
+                                                                   "tags":  [
+                                                                                "System"
+                                                                            ],
+                                                                   "summary":  "修改用户状态",
+                                                                   "parameters":  [
+                                                                                      {
+                                                                                          "name":  "id",
+                                                                                          "in":  "path",
+                                                                                          "required":  true,
+                                                                                          "schema":  {
+                                                                                                         "type":  "integer"
+                                                                                                     }
+                                                                                      },
+                                                                                      {
+                                                                                          "name":  "status",
+                                                                                          "in":  "query",
+                                                                                          "required":  true,
+                                                                                          "schema":  {
+                                                                                                         "type":  "integer",
+                                                                                                         "enum":  [
+                                                                                                                      0,
+                                                                                                                      1
+                                                                                                                  ]
+                                                                                                     }
+                                                                                      }
+                                                                                  ]
+                                                               }
+                                                   },
+                  "/api/system/role/list":  {
+                                                "get":  {
+                                                            "tags":  [
+                                                                         "System"
+                                                                     ],
+                                                            "summary":  "角色列表"
+                                                        }
+                                            },
+                  "/api/system/role/{id}":  {
+                                                "get":  {
+                                                            "tags":  [
+                                                                         "System"
+                                                                     ],
+                                                            "summary":  "获取角色详情",
+                                                            "parameters":  [
+                                                                               {
+                                                                                   "name":  "id",
+                                                                                   "in":  "path",
+                                                                                   "required":  true,
+                                                                                   "schema":  {
+                                                                                                  "type":  "integer"
+                                                                                              }
+                                                                               }
+                                                                           ]
+                                                        },
+                                                "delete":  {
+                                                               "tags":  [
+                                                                            "System"
+                                                                        ],
+                                                               "summary":  "删除角色",
+                                                               "parameters":  [
+                                                                                  {
+                                                                                      "name":  "id",
+                                                                                      "in":  "path",
+                                                                                      "required":  true,
+                                                                                      "schema":  {
+                                                                                                     "type":  "integer"
+                                                                                                 }
+                                                                                  }
+                                                                              ]
+                                                           }
+                                            },
+                  "/api/system/role":  {
+                                           "post":  {
+                                                        "tags":  [
+                                                                     "System"
+                                                                 ],
+                                                        "summary":  "新增角色"
+                                                    },
+                                           "put":  {
+                                                       "tags":  [
+                                                                    "System"
+                                                                ],
+                                                       "summary":  "编辑角色"
+                                                   }
+                                       },
+                  "/api/system/config/list":  {
+                                                  "get":  {
+                                                              "tags":  [
+                                                                           "System"
+                                                                       ],
+                                                              "summary":  "系统配置列表"
+                                                          }
+                                              },
+                  "/api/system/config/{key}":  {
+                                                   "get":  {
+                                                               "tags":  [
+                                                                            "System"
+                                                                        ],
+                                                               "summary":  "获取配置",
+                                                               "parameters":  [
+                                                                                  {
+                                                                                      "name":  "key",
+                                                                                      "in":  "path",
+                                                                                      "required":  true,
+                                                                                      "schema":  {
+                                                                                                     "type":  "string"
+                                                                                                 }
+                                                                                  }
+                                                                              ]
+                                                           },
+                                                   "put":  {
+                                                               "tags":  [
+                                                                            "System"
+                                                                        ],
+                                                               "summary":  "更新配置",
+                                                               "parameters":  [
+                                                                                  {
+                                                                                      "name":  "key",
+                                                                                      "in":  "path",
+                                                                                      "required":  true,
+                                                                                      "schema":  {
+                                                                                                     "type":  "string"
+                                                                                                 }
+                                                                                  },
+                                                                                  {
+                                                                                      "name":  "value",
+                                                                                      "in":  "query",
+                                                                                      "required":  true,
+                                                                                      "schema":  {
+                                                                                                     "type":  "string"
+                                                                                                 }
+                                                                                  }
+                                                                              ]
+                                                           }
+                                               },
+                  "/api/system/log/page":  {
+                                               "get":  {
+                                                           "tags":  [
+                                                                        "System"
+                                                                    ],
+                                                           "summary":  "操作日志",
+                                                           "parameters":  [
+                                                                              {
+                                                                                  "name":  "page",
+                                                                                  "in":  "query",
+                                                                                  "schema":  {
+                                                                                                 "type":  "integer",
+                                                                                                 "default":  1
+                                                                                             }
+                                                                              },
+                                                                              {
+                                                                                  "name":  "size",
+                                                                                  "in":  "query",
+                                                                                  "schema":  {
+                                                                                                 "type":  "integer",
+                                                                                                 "default":  10
+                                                                                             }
+                                                                              }
+                                                                          ]
+                                                       }
+                                           },
+                  "/api/oss/upload":  {
+                                          "post":  {
+                                                       "tags":  [
+                                                                    "OSS"
+                                                                ],
+                                                       "summary":  "上传文件",
+                                                       "requestBody":  {
+                                                                           "content":  {
+                                                                                           "multipart/form-data":  {
+                                                                                                                       "schema":  {
+                                                                                                                                      "type":  "object",
+                                                                                                                                      "properties":  {
+                                                                                                                                                         "file":  {
+                                                                                                                                                                      "type":  "string",
+                                                                                                                                                                      "format":  "binary"
+                                                                                                                                                                  }
+                                                                                                                                                     }
+                                                                                                                                  }
+                                                                                                                   }
+                                                                                       }
+                                                                       }
+                                                   }
+                                      },
+                  "/api/oss/list":  {
+                                        "get":  {
+                                                    "tags":  [
+                                                                 "OSS"
+                                                             ],
+                                                    "summary":  "文件列表"
+                                                }
+                                    },
+                  "/api/oss/{id}/url":  {
+                                            "get":  {
+                                                        "tags":  [
+                                                                     "OSS"
+                                                                 ],
+                                                        "summary":  "获取文件URL",
+                                                        "parameters":  [
+                                                                           {
+                                                                               "name":  "id",
+                                                                               "in":  "path",
+                                                                               "required":  true,
+                                                                               "schema":  {
+                                                                                              "type":  "integer"
+                                                                                          }
+                                                                           }
+                                                                       ]
+                                                    }
+                                        },
+                  "/api/oss/{id}":  {
+                                        "delete":  {
+                                                       "tags":  [
+                                                                    "OSS"
+                                                                ],
+                                                       "summary":  "删除文件",
+                                                       "parameters":  [
+                                                                          {
+                                                                              "name":  "id",
+                                                                              "in":  "path",
+                                                                              "required":  true,
+                                                                              "schema":  {
+                                                                                             "type":  "integer"
+                                                                                         }
+                                                                          }
+                                                                      ]
+                                                   }
+                                    },
+                  "/api/auth/social/url":  {
+                                               "get":  {
+                                                           "tags":  [
+                                                                        "Social"
+                                                                    ],
+                                                           "summary":  "获取社交授权URL",
+                                                           "security":  [
+
+                                                                        ],
+                                                           "parameters":  [
+                                                                              {
+                                                                                  "name":  "type",
+                                                                                  "in":  "query",
+                                                                                  "required":  true,
+                                                                                  "schema":  {
+                                                                                                 "type":  "string"
+                                                                                             }
+                                                                              },
+                                                                              {
+                                                                                  "name":  "redirectUri",
+                                                                                  "in":  "query",
+                                                                                  "required":  true,
+                                                                                  "schema":  {
+                                                                                                 "type":  "string"
+                                                                                             }
+                                                                              }
+                                                                          ]
+                                                       }
+                                           },
+                  "/api/auth/social/login":  {
+                                                 "post":  {
+                                                              "tags":  [
+                                                                           "Social"
+                                                                       ],
+                                                              "summary":  "社交登录",
+                                                              "security":  [
+
+                                                                           ],
+                                                              "requestBody":  {
+                                                                                  "content":  {
+                                                                                                  "application/json":  {
+                                                                                                                           "schema":  {
+                                                                                                                                          "type":  "object",
+                                                                                                                                          "properties":  {
+                                                                                                                                                             "type":  {
+                                                                                                                                                                          "type":  "string"
+                                                                                                                                                                      },
+                                                                                                                                                             "code":  {
+                                                                                                                                                                          "type":  "string"
+                                                                                                                                                                      },
+                                                                                                                                                             "state":  {
+                                                                                                                                                                           "type":  "string"
+                                                                                                                                                                       }
+                                                                                                                                                         }
+                                                                                                                                      }
+                                                                                                                       }
+                                                                                              }
+                                                                              }
+                                                          }
+                                             },
+                  "/api/auth/social/bind":  {
+                                                "post":  {
+                                                             "tags":  [
+                                                                          "Social"
+                                                                      ],
+                                                             "summary":  "绑定社交账号",
+                                                             "requestBody":  {
+                                                                                 "content":  {
+                                                                                                 "application/json":  {
+                                                                                                                          "schema":  {
+                                                                                                                                         "type":  "object",
+                                                                                                                                         "properties":  {
+                                                                                                                                                            "type":  {
+                                                                                                                                                                         "type":  "string"
+                                                                                                                                                                     },
+                                                                                                                                                            "code":  {
+                                                                                                                                                                         "type":  "string"
+                                                                                                                                                                     }
+                                                                                                                                                        }
+                                                                                                                                     }
+                                                                                                                      }
+                                                                                             }
+                                                                             }
+                                                         }
+                                            },
+                  "/api/auth/social/unbind":  {
+                                                  "post":  {
+                                                               "tags":  [
+                                                                            "Social"
+                                                                        ],
+                                                               "summary":  "解绑社交账号",
+                                                               "requestBody":  {
+                                                                                   "content":  {
+                                                                                                   "application/json":  {
+                                                                                                                            "schema":  {
+                                                                                                                                           "type":  "object",
+                                                                                                                                           "properties":  {
+                                                                                                                                                              "type":  {
+                                                                                                                                                                           "type":  "string"
+                                                                                                                                                                       }
+                                                                                                                                                          }
+                                                                                                                                       }
+                                                                                                                        }
+                                                                                               }
+                                                                               }
+                                                           }
+                                              }
+              }
+}

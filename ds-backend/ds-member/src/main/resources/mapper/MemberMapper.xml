@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ds.member.mapper.MemberMapper">
+
+    <select id="selectByAncestorPath" resultType="com.ds.member.entity.Member">
+        SELECT m.* FROM ds_member m
+        WHERE (
+            <foreach collection="ancestorPath.split(',')" item="ancestorId" separator=" OR ">
+                FIND_IN_SET(#{ancestorId}, m.ancestor_path)
+            </foreach>
+        )
+        AND m.status = 1
+        <if test="depth != null and depth >= 0">
+            AND (
+            <foreach collection="ancestorPath.split(',')" item="ancestorId" separator=" OR ">
+                LENGTH(m.ancestor_path) - LENGTH(REPLACE(m.ancestor_path, ',', '')) = LENGTH(#{ancestorId}) - LENGTH(REPLACE(#{ancestorId}, ',', '')) + #{depth}
+            </foreach>
+            )
+        </if>
+        ORDER BY m.create_time ASC
+    </select>
+
+</mapper>

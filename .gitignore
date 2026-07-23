@@ -1,0 +1,87 @@
+# ==========================================
+# Java / Maven
+# ==========================================
+target/
+!.mvn/wrapper/maven-wrapper.jar
+!**/src/main/**/target/
+!**/src/test/**/target/
+*.class
+*.jar
+*.war
+*.log
+*.ctxt
+.mtj.tmp/
+hs_err_pid*
+
+# ==========================================
+# IDE
+# ==========================================
+.trae/
+.idea/
+*.iml
+*.iws
+*.ipr
+.vscode/
+.settings/
+.project
+.classpath
+.factorypath
+.springBeans
+
+# ==========================================
+# Node.js / Nuxt
+# ==========================================
+node_modules/
+.nuxt/
+.output/
+dist/
+.cache/
+*.tsbuildinfo
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# ==========================================
+# OS
+# ==========================================
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ==========================================
+# Environment & Secrets
+# ==========================================
+.env
+.env.local
+.env.*.local
+*.env
+application-local.yml
+application-local.properties
+
+# ==========================================
+# Docker
+# ==========================================
+docker-compose.override.yml
+
+# ==========================================
+# Logs & Temp
+# ==========================================
+logs/
+*.log
+temp/
+tmp/
+*.tmp
+*.swp
+*.swo
+*~
+
+# ==========================================
+# Build Output
+# ==========================================
+build/
+out/
+*.egg-info/
+__pycache__/

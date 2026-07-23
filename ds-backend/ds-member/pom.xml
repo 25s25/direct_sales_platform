@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.ds</groupId>
+        <artifactId>ds-backend</artifactId>
+        <version>1.0.0-SNAPSHOT</version>
+    </parent>
+    <artifactId>ds-member</artifactId>
+    <name>ds-member</name>
+    <description>会员管理模块</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.ds</groupId>
+            <artifactId>ds-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ds</groupId>
+            <artifactId>ds-system</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.ds</groupId>
+            <artifactId>ds-message</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+    </dependencies>
+</project>
